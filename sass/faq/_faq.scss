@@ -1,0 +1,92 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+
+/** @section FAQ */
+.faq {
+    font-size: var(--faq-text);
+    color: var(--primary);
+    background: var(--secondary-background);
+    padding: var(--faq-padding);
+    margin-block: var(--faq-margin);
+    border-radius: var(--faq-radius);
+    box-shadow: var(--faq-shadow);
+    details {
+        &:not(:first-of-type) {
+            padding-block-start: var(--faq-question-padding);
+            border-block-start: 1px solid var(--primary-background);
+        }
+        &:not(:last-of-type) {
+            padding-block-end: var(--faq-question-padding);
+        }
+        &[open] {
+            summary {
+                + * {
+                    margin-block-start: var(--faq-answer-margin);
+                }
+                &::after {
+                    background-position-y: -31px;
+                }
+            }
+        }
+        &:not([open]) {
+            summary {
+                &:hover,
+                &:focus {
+                    color: var(--secondary-hover);
+                }
+            }
+        }
+    }
+    summary,
+    .title {
+        color: var(--secondary);
+        line-height: normal;
+    }
+    summary {
+        font-weight: 600;
+        display: flex;
+        gap: var(--faq-question-gap);
+        align-items: center;
+        // Remove the default marker (for browsers which do not support `display: list-item` on `summary` elements)
+        &::-webkit-details-marker {
+            display: none; // Safari 18.1-, Safari iOS 18.1-
+        }
+        &::after {
+            background: url("images/sprites.svg") no-repeat;
+            display: block;
+            width: var(--faq-question-marker-size);
+            aspect-ratio: 1;
+            content: "";
+        }
+    }
+    .title {
+        font-size: var(--faq-title);
+        padding-inline-start: var(--faq-title-marker-padding);
+        margin-block-end: var(--faq-title-margin);
+        position: relative;
+        &::before {
+            background: url("images/sprites.svg") no-repeat left bottom;
+            width: var(--faq-title-marker-size);
+            aspect-ratio: 1;
+            position: absolute;
+            inset-block-start: 50%;
+            inset-inline-start: 0;
+            transform: translateY(-50%);
+            content: "";
+        }
+    }
+    .subtitle {
+        font-weight: inherit; // Since `hN` have `font-weight` set to `bold` (or `700`) by default
+        flex: 1;
+    }
+    @include css-media-queries($from-breakpoint: wide-card) {
+        max-inline-size: var(--faq-max-size);
+        margin-inline: auto;
+        .title {
+            &::before {
+                inset-inline-start: var(--faq-title-marker-inset);
+                transform: translateY(-50%) scale(calc(5 / 3));
+            }
+        }
+    }
+}

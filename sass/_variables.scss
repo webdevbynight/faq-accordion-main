@@ -1,0 +1,46 @@
+@charset "utf-8";
+@use "./base/functions" as *;
+@use "./base/mixins" as *;
+
+// Variables
+:root {
+    // Font and typo
+    --font: "Work Sans", sans-serif;
+    --faq-text: #{px2rem(14)};
+    --faq-title: #{px2rem(32)};
+    --faq-question: #{px2rem(16)};
+    
+    // Colours
+    --primary: #8b6990;
+    --secondary: #301534;
+    --secondary-hover: #ad28eb;
+    --primary-background: #f8eeff;
+    --secondary-background: white;
+    --tertiary-background: #ad28eb;
+    --tertiary-background-hover: #301534;
+    
+    // Margins, paddings, borders, gaps and shadows
+    --faq-max-size: #{px2rem(520)};
+    --faq-padding: #{px2rem(24)};
+    --faq-margin: #{px2rem(142.5)};
+    --faq-radius: #{px2rem(8)};
+    --faq-shadow: rgb(80 0 118 / .1) 0 #{px2rem(32)} #{px2rem(56)};
+    --faq-title-margin: #{px2rem(24)};
+    --faq-title-marker-size: #{px2rem(24)};
+    --faq-title-marker-padding: #{px2rem(48)};
+    --faq-question-padding: #{px2rem(20)};
+    --faq-question-gap: #{px2rem(24)};
+    --faq-question-marker-size: #{px2rem(30)};
+    --faq-answer-margin: #{px2rem(24)};
+    @include css-media-queries($from-breakpoint: wide-card) {
+        --faq-text: #{px2rem(16)};
+        --faq-title: #{px2rem(56)};
+        --faq-question: #{px2rem(18)};
+        --faq-padding: #{px2rem(40)};
+        --faq-margin: #{px2rem(167.5)};
+        --faq-title-margin: #{px2rem(32)};
+        --faq-title-marker-padding: #{px2rem(64)};
+        --faq-title-marker-inset: #{px2rem(8)};
+        --faq-question-padding: #{px2rem(24)};
+    }
+}

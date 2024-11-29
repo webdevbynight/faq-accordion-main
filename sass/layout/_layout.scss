@@ -1,0 +1,29 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+
+/** @section General layout */
+body {
+    font-family: var(--font);
+    background: var(--primary-background);
+    display: flex;
+    flex-direction: column;
+    min-block-size: 100dvb;
+}
+main {
+    background: url("images/background-mobile.svg") no-repeat center top / contain;
+    flex: 1;
+    padding: 0 var(--faq-padding);
+}
+.attribution {
+    font-size: .6875rem;
+    text-align: center;
+    a {
+        color: inherit;
+    }
+}
+@include css-media-queries($from-breakpoint: wide-card) {
+    main {
+        background-image: url("images/background-desktop.svg");
+        padding-inline: 0;
+    }
+}
